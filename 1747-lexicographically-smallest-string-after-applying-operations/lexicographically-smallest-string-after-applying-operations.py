@@ -1,11 +1,12 @@
 class Solution:
     def findLexSmallestString(self, s: str, a: int, b: int) -> str:
         n=len(s)
+        incremented = {str(n):str((n+a)%10) for n in range(10)}
 
         def add(s):
             res=''
             for i in range(n):
-                res+=str((int(s[i])+a)%10) if i%2 else s[i]
+                res += s[i] if i % 2 == 0 else incremented[s[i]]
             return res
 
         def rotate(s):
