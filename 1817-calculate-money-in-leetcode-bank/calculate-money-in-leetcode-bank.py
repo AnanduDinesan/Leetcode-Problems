@@ -1,11 +1,18 @@
 class Solution:
     def totalMoney(self, n: int) -> int:
-        week=n//7
-        day=n%7
-        bal=0
-        i=1
-        while i<=week:
-            bal+=(7*(2*i+6)//2)
-            i+=1
-        bal+=(day*(2*i+day-1)//2)
-        return bal
+        if n==0:
+            return 0
+        
+        mon=1
+        res=1
+        inc=1
+        for i in range(1,n):
+            inc+=1
+            if i%7==0:
+                mon+=1
+                inc=mon
+            res+=inc
+        
+        return res
+            
+            
